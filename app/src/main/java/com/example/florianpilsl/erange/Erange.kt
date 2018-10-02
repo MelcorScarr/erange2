@@ -22,15 +22,22 @@ class Erange : AppCompatActivity() {
         setContentView(R.layout.activity_erange)
         checkPermissions()
 
-        var navigationView: BottomNavigationView? = findViewById(R.id.navigationView)
-
-        navigationView!!.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener {
-            override fun onNavigationItemSelected(item: MenuItem): Boolean {
-                Log.d("menu", "Chosen:$item")
-                //supportFragmentManager.beginTransaction().replace(R.id.eRange, ParameterFragment.newInstance(), "ParameterFragment").commit()
-                return true
+        val navigationView: BottomNavigationView? = findViewById(R.id.navigationView)
+        val parameterFragment = ParameterFragment.newInstance()
+        val mapFragment = MapFragment.newInstance()
+        val summaryFragment = SummaryFragment.newInstance()
+        navigationView!!.setOnNavigationItemSelectedListener { item ->
+            Log.d("menu", "Chosen:$item")
+            if (item.toString() == "Planning") {
+                supportFragmentManager.beginTransaction().replace(R.id.eRange, parameterFragment, "ParameterFragment").commit()
+            } else if (item.toString() == "Map") {
+                supportFragmentManager.beginTransaction().replace(R.id.eRange, mapFragment, "MapFragment").commit()
+            } else if (item.toString() == "Summary") {
+                supportFragmentManager.beginTransaction().replace(R.id.eRange, summaryFragment, "SummaryFragment").commit()
             }
-        })
+
+            true
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int,
@@ -58,8 +65,7 @@ class Erange : AppCompatActivity() {
             ActivityCompat.requestPermissions(this,
                     arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     101)
-        }
-        else {
+        } else {
             setupFragment()
         }
     }
