@@ -9,6 +9,10 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 
 import kotlinx.android.synthetic.main.activity_erange.*
+import android.support.annotation.NonNull
+import android.support.design.widget.BottomNavigationView
+import android.view.MenuItem
+
 
 class Erange : AppCompatActivity() {
 
@@ -18,20 +22,15 @@ class Erange : AppCompatActivity() {
         setContentView(R.layout.activity_erange)
         checkPermissions()
 
-        goToMapAct.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.eRange, ParameterFragment.newInstance(), "ParameterFragment").commit()
+        var navigationView: BottomNavigationView? = findViewById(R.id.navigationView)
 
-
-            //supportFragmentManager
-            //      .beginTransaction()
-            //    .add(R.id.eRange, MapFragment.newInstance(), "MapFragment")
-            //  .commit()
-
-
-            Log.d("fragments", "" + supportFragmentManager.fragments[0].tag)
-
-
-        }
+        navigationView!!.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener {
+            override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                Log.d("menu", "Chosen:$item")
+                //supportFragmentManager.beginTransaction().replace(R.id.eRange, ParameterFragment.newInstance(), "ParameterFragment").commit()
+                return true
+            }
+        })
     }
 
     override fun onRequestPermissionsResult(requestCode: Int,
@@ -45,21 +44,28 @@ class Erange : AppCompatActivity() {
                     Log.d("permissions", "Permission has been denied by user")
                 } else {
                     Log.d("permissions", "Permission has been granted by user")
-                    supportFragmentManager.beginTransaction().replace(R.id.eRange, MapFragment.newInstance(), "MapFragment").commit()
+                    setupFragment()
                 }
             }
         }
     }
 
     private fun checkPermissions() {
-        val permissionCoarse = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+        val permissionFine = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
 
-        if (permissionCoarse != PackageManager.PERMISSION_GRANTED) {
-            Log.d("permissions", "Permission to coarse locations denied")
+        if (permissionFine != PackageManager.PERMISSION_GRANTED) {
+            Log.d("permissions", "Permission to fine locations denied")
             ActivityCompat.requestPermissions(this,
-                    arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION),
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     101)
         }
+        else {
+            setupFragment()
+        }
+    }
+
+    private fun setupFragment() {
+        supportFragmentManager.beginTransaction().replace(R.id.eRange, MapFragment.newInstance(), "MapFragment").commit()
     }
 
 
