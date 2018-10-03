@@ -4,6 +4,23 @@
             "outputFile": "C:\\Users\\melco\\Downloads\\ERange\\drive-download-20181002T094059Z-001\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rHK\\values-zh-rHK.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\melco\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-places-15.0.1.aar\\d5683b27fbaa89a314e24af0d4df846b\\res\\values-zh-rHK\\values.xml",
+                    "from": {
+                        "startLines": "4,5",
+                        "startColumns": "0,0",
+                        "startOffsets": "197,288",
+                        "endColumns": "90,87",
+                        "endOffsets": "287,375"
+                    },
+                    "to": {
+                        "startLines": "37,38",
+                        "startColumns": "4,4",
+                        "startOffsets": "4047,4142",
+                        "endColumns": "94,91",
+                        "endOffsets": "4137,4229"
+                    }
+                },
+                {
                     "source": "C:\\Users\\melco\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\bac5208732a8fc03f94b84f5ffe98b6a\\res\\values-zh-rHK\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -47,11 +64,11 @@
                         "endOffsets": "195,288,388,470,567,675,751,827,905,1001,1097,1192,1289,1384,1482,1633,1727,1805"
                     },
                     "to": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,37",
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,39",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,200,293,393,475,572,680,756,832,910,1006,1102,1197,1294,1389,1487,1638,4047",
+                        "startOffsets": "105,200,293,393,475,572,680,756,832,910,1006,1102,1197,1294,1389,1487,1638,4234",
                         "endColumns": "94,92,99,81,96,107,75,75,77,95,95,94,96,94,97,150,93,77",
-                        "endOffsets": "195,288,388,470,567,675,751,827,905,1001,1097,1192,1289,1384,1482,1633,1727,4120"
+                        "endOffsets": "195,288,388,470,567,675,751,827,905,1001,1097,1192,1289,1384,1482,1633,1727,4307"
                     }
                 },
                 {
@@ -64,11 +81,11 @@
                         "endOffsets": "152"
                     },
                     "to": {
-                        "startLines": "38",
+                        "startLines": "40",
                         "startColumns": "4",
-                        "startOffsets": "4125",
+                        "startOffsets": "4312",
                         "endColumns": "101",
-                        "endOffsets": "4222"
+                        "endOffsets": "4409"
                     }
                 }
             ]

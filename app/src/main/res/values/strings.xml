@@ -9,4 +9,7 @@
     <string name="action_settings">Settings</string>
     <string name="summaryfragment">SummaryFragment</string>
     <string name="parameterfragment">ParameterFragment</string>
+    <string name="parameterinput">Route und Einstellungen</string>
+    <string name="zielort">Zielort</string>
+    <string name="startort">Startort</string>
 </resources>
