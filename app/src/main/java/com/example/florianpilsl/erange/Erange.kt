@@ -8,43 +8,50 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.api.GoogleApiClient
-import com.google.android.gms.location.places.Places
+import com.cs.googlemaproute.DrawRoute
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
 
 
-class Erange : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
-    override fun onConnectionFailed(p0: ConnectionResult) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+class Erange : AppCompatActivity(), DrawRoute.onDrawRoute, OnMapReadyCallback, ParameterFragment.OnParameterInteractionListener {
+    //Call this when the starting parameters have been set in the parameter fragment.
+
+    override fun onParameterStart(start: LatLng) {
+        MapFragment.start = start
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    //Call this when the ending parameters have been set in the parameter fragment.
+    override fun onParameterEnd(end: LatLng) {
+        MapFragment.end = end
+    }
 
+    override fun onMapReady(p0: GoogleMap?) {
+
+    }
+
+    override fun afterDraw(result: String?) {
+        Log.d("AfterDraw", "string " + result)
+    }
+
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_erange)
-        checkPermissions()
+        checkPermissions() // Check for permissions. If not available, ask for them.
 
         val summaryFragment = SummaryFragment.newInstance()
-        val placeAutoCompleteAdapter: PlaceAutoCompleteAdapter
-        val latLangBounds: LatLngBounds = LatLngBounds(LatLng(-40.0, -168.0), LatLng(71.0, 136.0))
-        val mGoogleApiClient: GoogleApiClient = GoogleApiClient.Builder(this).addApi(Places.GEO_DATA_API).addApi(Places.PLACE_DETECTION_API).enableAutoManage(this, this).build()
-
-        placeAutoCompleteAdapter = PlaceAutoCompleteAdapter(this, mGoogleApiClient, latLangBounds, null);
-
         val navigationView: BottomNavigationView? = findViewById(R.id.navigationView)
-        val parameterFragment = ParameterFragment.newInstance(placeAutoCompleteAdapter)
-        val mapFragment = MapFragment.newInstance()
-
-        parameterFragment.placeAutoCompleteAdapter = placeAutoCompleteAdapter
-
+        val parameterFragment = ParameterFragment()
+        val mapfragment = MapFragment.newInstance()
+        // Set the fragments to the proper tab
         navigationView!!.setOnNavigationItemSelectedListener { item ->
             Log.d("menu", "Chosen:$item")
             if (item.toString() == "Planning") {
                 supportFragmentManager.beginTransaction().replace(R.id.eRange, parameterFragment, "ParameterFragment").commit()
             } else if (item.toString() == "Map") {
-                supportFragmentManager.beginTransaction().replace(R.id.eRange, mapFragment, "MapFragment").commit()
+                supportFragmentManager.beginTransaction().replace(R.id.eRange, mapfragment, "MapFragment").commit()
             } else if (item.toString() == "Summary") {
                 supportFragmentManager.beginTransaction().replace(R.id.eRange, summaryFragment, "SummaryFragment").commit()
             }
@@ -86,6 +93,4 @@ class Erange : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
     private fun setupFragment() {
         supportFragmentManager.beginTransaction().replace(R.id.eRange, MapFragment.newInstance(), "MapFragment").commit()
     }
-
-
 }

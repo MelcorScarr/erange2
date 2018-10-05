@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.cs:googlemaproute-1.0.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/googlemaproute-1.0.0.aar/481d3f03d83be08ffc07802dbbe05bf6/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/googlemaproute-1.0.0.aar/481d3f03d83be08ffc07802dbbe05bf6/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.cs/googlemaproute/1.0.0/9bd37ec4e31144735bc26d9fb24ea9531482f925/googlemaproute-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

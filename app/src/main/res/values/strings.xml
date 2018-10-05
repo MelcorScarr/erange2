@@ -12,4 +12,7 @@
     <string name="parameterinput">Route und Einstellungen</string>
     <string name="zielort">Zielort</string>
     <string name="startort">Startort</string>
+    <string name="progressexplanation1">Du benötigst etwa</string>
+    <string name="progressexplanation2">deines Akkus.</string>
+    <string name="progressexplanation0"></string>
 </resources>
